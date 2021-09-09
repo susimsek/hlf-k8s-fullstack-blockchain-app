@@ -1,0 +1,21 @@
+{
+  "name": "src",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+
+  "dependencies": {
+    "express":"4.17.1",
+    "fabric-ca-client": "2.2.4",
+    "fabric-network": "2.2.3",
+    "body-parser":"1.19.0",
+    "cors": "^2.8.5",
+    "morgan":"1.10.0"
+  },  
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
