@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api
+  labels:
+    app: api
+spec:
+  selector:
+    matchLabels:
+      app: api
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: api
+    spec:
+      containers:
+      - name: api
+        image: suayb/api:1.0
+        imagePullPolicy: IfNotPresent
+        stdin: true
+        tty: true
+        resources:
+          requests:
+            memory: "400Mi"
+            cpu: "300m"
+          limits:
+            memory: "450Mi"
+            cpu: "400m"
+        ports:
+        - containerPort: 4000
+        volumeMounts:
+          - name: data
+            mountPath: /usr/src/app/connection-profile
+            subPath: connection-profile # blochani networke erişmek için gerekli.
+          - name: data
+            mountPath: /organizations
+            subPath: organizations # sertifiakalar erişim için gerekli.
+          - name: data
+            mountPath: /usr/src/app/wallet
+            subPath: wallet # identity kalıcı hale gelir,api chash verdiğinde bile.
+          - mountPath: /usr/src/app/config.json
+            name: ca-client-config
+            subPath: config.json # custom config.json dosyası configmapdeki
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: fabricfiles-pvc
+        - name: ca-client-config
+          configMap:
+            name: ca-client-config
+            items:
+              - key: config.json
+                path: config.json # bu pathe koyuyor.root folderı.
+                mode: 0544 # bu dosya için permmsion tanımı.
+

@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prometheus
+  labels:
+    app: prometheus
+spec:
+  selector:
+    matchLabels:
+      app: prometheus
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: prometheus
+    spec:
+      containers:
+      - name: prometheus
+        image: prom/prometheus:v2.29.2
+        imagePullPolicy: IfNotPresent
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "300m"
+        ports:
+        - containerPort: 9090
+        volumeMounts:
+          - name: prometheus
+            mountPath: /prometheus
+            subPath: monitoring/prometheus
+          - name:  prometheus-config
+            mountPath:  /etc/prometheus/prometheus.yml
+            subPath: prometheus.yml # prometheus dosyası pathi verildi.
+      volumes:
+        - name: prometheus
+          persistentVolumeClaim:
+            claimName: fabricfiles-pvc
+        - name:  prometheus-config
+          configMap:
+            name: monitoring-config
+            items:
+              - key: prometheus.yml
+                path: prometheus.yml 

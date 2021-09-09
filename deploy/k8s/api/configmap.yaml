@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ca-client-config
+data:
+  config.json: |-
+      {
+      "request-timeout" : 30000,
+      "tcert-batch-size" : 10,
+      "crypto-hash-algo": "SHA2",
+      "crypto-keysize": 256,
+      "crypto-hsm": false,
+      "connection-timeout": 30000
+      }
