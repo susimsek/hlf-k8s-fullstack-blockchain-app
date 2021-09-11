@@ -24,6 +24,24 @@ spec:
             cpu: "300m"
         ports:
         - containerPort: 9090
+        livenessProbe:
+          httpGet:
+            path: /-/healthy
+            port: 9090
+          initialDelaySeconds: 30
+          periodSeconds: 15
+          timeoutSeconds: 10
+          failureThreshold: 3
+          successThreshold: 1
+        readinessProbe:
+          httpGet:
+            path: /-/ready
+            port: 9090
+          initialDelaySeconds: 30
+          periodSeconds: 5
+          timeoutSeconds: 4
+          failureThreshold: 3
+          successThreshold: 1
         volumeMounts:
           - name: prometheus
             mountPath: /prometheus
