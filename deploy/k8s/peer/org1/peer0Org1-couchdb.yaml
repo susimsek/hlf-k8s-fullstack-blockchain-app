@@ -26,6 +26,18 @@ spec:
             cpu: "300m"
         ports:
           - containerPort: 5984
+        livenessProbe:
+          tcpSocket:
+            port: 5984
+          initialDelaySeconds: 60
+          timeoutSeconds: 5
+          failureThreshold: 6
+        readinessProbe:
+          tcpSocket:
+            port: 5984
+          initialDelaySeconds: 5
+          timeoutSeconds: 3
+          periodSeconds: 5
         env:
           - name: COUCHDB_USER
             value: admin

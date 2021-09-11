@@ -31,6 +31,12 @@ spec:
         env:
           - name: ZOO_SERVERS
             value: server.0=zoo-0.zoo.default.svc.cluster.local:2888:3888 server.1=zoo-1.zoo.default.svc.cluster.local:2888:3888
+          - name: ZOO_4LW_COMMANDS_WHITELIST
+            value: srvr, mntr, ruok
+          - name: ZOO_MAX_SESSION_TIMEOUT
+            value: "40000"
+          - name: ZOO_TICK_TIME
+            value: "2000"
         ports:
           - name: client
             containerPort: 2181
@@ -38,6 +44,17 @@ spec:
             containerPort: 2888
           - name: leader-election
             containerPort: 3888
+        livenessProbe:
+          exec:
+            command:
+              - /bin/sh
+              - -c
+              - zkServer.sh status
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 6
+          successThreshold: 1
         volumeMounts:
           - name: zookeeper
             mountPath: /data
