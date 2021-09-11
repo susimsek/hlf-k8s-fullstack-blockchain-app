@@ -24,6 +24,10 @@ app.listen(4000, () => {
 
 })
 
+app.get('/health',(req,res)=> {
+    res.json({ status: 'UP' })
+});
+
 app.post("/register", async (req, res) => {
 
     try {

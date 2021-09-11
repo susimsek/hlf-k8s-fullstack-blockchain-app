@@ -12,5 +12,5 @@ spec:
   accessModes:
     - ReadWriteOnce
   nfs:
-    path: /srv/kubedata
-    server: 192.168.12.11
+    path: /srv/kubedata/fabricfiles
+    server: 192.168.12.9

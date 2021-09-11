@@ -28,6 +28,14 @@ spec:
         ports:
           - containerPort: 7050
           - containerPort: 9444
+        livenessProbe:
+          httpGet:
+            port: 9444
+            path: /healthz
+        readinessProbe:
+          httpGet:
+            port: 9444
+            path: /healthz
         env:
           - name: CONFIGTX_ORDERER_ADDRESSES
             value: "orderer3:7050"

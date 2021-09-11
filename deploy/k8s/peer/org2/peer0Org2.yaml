@@ -35,6 +35,14 @@ spec:
           - containerPort: 7052
           - containerPort: 7053
           - containerPort: 9443
+        livenessProbe:
+          httpGet:
+            port: 9443
+            path: /healthz
+        readinessProbe:
+          httpGet:
+            port: 9443
+            path: /healthz
         env:
           - name: CORE_PEER_ADDRESSAUTODETECT
             value: "true"
@@ -86,6 +94,10 @@ spec:
             value: 0.0.0.0:9443
           - name: CORE_METRICS_PROVIDER
             value: prometheus
+          - name: CORE_VM_ENDPOINT
+            value: unix:///host/var/run/docker.sock
+          - name: CORE_VM_DOCKER_ATTACHSTDOUT
+            value: "true"
         volumeMounts:
           - name: fabricfiles 
             mountPath: /opt/gopath/src/github.com/chaincode/
@@ -108,6 +120,8 @@ spec:
           - name: external-builder-release
             mountPath: /builders/external/bin/release
             subPath: release # release scripti
+          - name: dockersocket
+            mountPath: /host/var/run/docker.sock
       volumes:
         - name: fabricfiles
           persistentVolumeClaim:
@@ -139,3 +153,6 @@ spec:
               - key: release
                 path: release
                 mode: 0544 # scripti çalışması için geerkli.
+        - name: dockersocket
+          hostPath:
+            path: /var/run/docker.sock

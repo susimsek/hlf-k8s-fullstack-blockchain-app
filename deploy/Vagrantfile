@@ -18,8 +18,9 @@ BOX_BASE = "ubuntu/focal64"
 
 # set servers list and their parameters
 	NODES = [
-  	# { :hostname => "haproxy", :ip => "192.168.12.10", :cpus => 1, :mem => 512, :type => "haproxy" },
-  	{ :hostname => "k8smaster", :ip => "192.168.12.11", :cpus => 4, :mem => 6096, :type => "k8s" }
+	{ :hostname => "nfsserver", :ip => "192.168.12.9", :cpus => 1, :mem => 512, :type => "nfs" },
+  	{ :hostname => "haproxy", :ip => "192.168.12.10", :cpus => 1, :mem => 512, :type => "haproxy" },
+  	{ :hostname => "k8smaster", :ip => "192.168.12.11", :cpus => 8, :mem => 9728, :type => "k8s" }
   	# { :hostname => "k8snode1", :ip => "192.168.12.12", :cpus => 2, :mem => 2048, :type => "k8s" }
 	]
 
@@ -34,13 +35,23 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # config.ssh.password = 'vagrant'
     # config.ssh.insert_key = 'true'
 
-    NODES.each do |node|
-        if node[:type] != "haproxy"
-        	etcHosts += "echo '" + node[:ip] + "   " + node[:hostname] + "' >> /etc/hosts" + "\n"
-    		else
-    			etcHosts += "echo '" + node[:ip] + "   " + node[:hostname] + " elb.kub ' >> /etc/hosts" + "\n"
-    	end
-    end #end NODES
+    nfs_enabled = NODES.select { |node| node[:type] == "nfs"}
+
+     NODES.each do |node|
+                   if node[:type] == "haproxy"
+                       etcHosts += "echo '" + node[:ip] + "   " + node[:hostname] + " elb.kub ' >> /etc/hosts" + "\n"
+                   elsif node[:type] == "nfs"
+                       etcHosts += "echo '" + node[:ip] + "   " + node[:hostname] + " nfs.kub ' >> /etc/hosts" + "\n"
+                   else
+                      if node[:hostname] == "k8smaster" && nfs_enabled.empty?()
+                        etcHosts += "echo '" + node[:ip] + "   " + node[:hostname] + " nfs.kub ' >> /etc/hosts" + "\n"
+                      else
+                       etcHosts += "echo '" + node[:ip] + "   " + node[:hostname] + "' >> /etc/hosts" + "\n"
+                      end
+               	   end
+     end #end NODES
+
+
 
     NODES.each do |node|
         config.vm.define node[:hostname] do |cfg|

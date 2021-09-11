@@ -21,7 +21,7 @@ echo
 kubectl apply -f ca/
 
 echo "## Fabric ca server creation pending completion"
-kubectl wait --for condition=available deployment -l "app in (ca-orderer,ca-org1,ca-org2,ca-org3)"
+kubectl wait --for condition=available --timeout=300s deployment -l "app in (ca-orderer,ca-org1,ca-org2,ca-org3)"
 }
 
 function create_certificates(){
@@ -30,7 +30,7 @@ echo
 kubectl apply -f job/create-certs.yaml
 
 echo "## Certificate creation job pending completion"
-kubectl wait --for=condition=complete job create-certs
+kubectl wait --for=condition=complete --timeout=300s job create-certs
 }
 
 function create_artifacts(){
@@ -39,7 +39,7 @@ echo
 kubectl apply -f job/create-artifacts.yaml
 
 echo "## Artifact creation job pending completion"
-kubectl wait --for=condition=complete job create-artifacts
+kubectl wait --for=condition=complete --timeout=300s job create-artifacts
 }
 
 function create_kafka(){
@@ -48,7 +48,7 @@ echo
 kubectl apply -f kafka/
 
 echo "## Kafka creation pending completion"
-kubectl wait --for condition=ready pod -l "app in (zookeeper,kafka)"
+kubectl wait --for condition=ready --timeout=300s pod -l "app in (zookeeper,kafka)"
 }
 
 function create_orderer(){
@@ -57,7 +57,7 @@ echo
 kubectl apply -f orderer/
 
 echo "## Orderer pending completion"
-kubectl wait --for condition=available deployment -l "app in (orderer,orderer2,orderer3,orderer4,orderer5)"
+kubectl wait --for condition=available --timeout=300s deployment -l "app in (orderer,orderer2,orderer3,orderer4,orderer5)"
 }
 
 function create_peer(){
@@ -77,13 +77,13 @@ kubectl apply -f peer/org3/
 echo "## Peer pending completion"
 echo "## Org1 Peer pending completion"
 echo
-kubectl wait --for condition=available deployment -l "app in (peer0-org1-couchdb,peer0-org1,cli-peer0-org1)"
+kubectl wait --for condition=available --timeout=300s deployment -l "app in (peer0-org1-couchdb,peer0-org1,cli-peer0-org1)"
 echo "## Org2 Peer pending completion"
 echo
-kubectl wait --for condition=available deployment -l "app in (peer0-org2-couchdb,peer0-org2,cli-peer0-org2)"
+kubectl wait --for condition=available --timeout=300s deployment -l "app in (peer0-org2-couchdb,peer0-org2,cli-peer0-org2)"
 echo "## Org3 Peer pending completion"
 echo
-kubectl wait --for condition=available deployment -l "app in (peer0-org3-couchdb,peer0-org3,cli-peer0-org3)"
+kubectl wait --for condition=available --timeout=300s deployment -l "app in (peer0-org3-couchdb,peer0-org3,cli-peer0-org3)"
 }
 
 function create_app_channel(){
@@ -92,7 +92,7 @@ echo
 kubectl apply -f job/create-app-channel.yaml
 
 echo "## Application channel creation job pending completion"
-kubectl wait --for=condition=complete job create-app-channel
+kubectl wait --for=condition=complete --timeout=300s job create-app-channel
 }
 
 function join_app_channel(){
@@ -101,7 +101,7 @@ echo
 kubectl apply -f job/join-app-channel.yaml
 
 echo "## Application channel joining job pending completion"
-kubectl wait --for=condition=complete job join-app-channel
+kubectl wait --for=condition=complete --timeout=300s job join-app-channel
 }
 
 function update_anchor_peer(){
@@ -110,7 +110,7 @@ echo
 kubectl apply -f job/update-anchor-peer.yaml
 
 echo "## Anchor peer updating job pending completion"
-kubectl wait --for=condition=complete job update-anchor-peer
+kubectl wait --for=condition=complete --timeout=300s job update-anchor-peer
 }
 
 
@@ -120,7 +120,7 @@ echo
 kubectl apply -f job/install-chaincode.yaml
 
 echo "## Chaincode installing job pending completion"
-kubectl wait --for=condition=complete job install-chaincode
+kubectl wait --for=condition=complete --timeout=300s job install-chaincode
 }
 
 function deploy_chaincode(){
@@ -129,7 +129,7 @@ echo
 kubectl apply -f cc/
 
 echo "## Chanicode creation pending completion"
-kubectl wait --for condition=available deployment -l "app in (chaincode-basic-org1,chaincode-basic-org2,chaincode-basic-org3)"
+kubectl wait --for condition=available --timeout=300s deployment -l "app in (chaincode-basic-org1,chaincode-basic-org2,chaincode-basic-org3)"
 }
 
 function approve_chaincode(){
@@ -138,7 +138,7 @@ echo
 kubectl apply -f job/approve-chaincode.yaml
 
 echo "## Chaincode approving job pending completion"
-kubectl wait --for=condition=complete job approve-chaincode
+kubectl wait --for=condition=complete --timeout=300s job approve-chaincode
 }
 
 function check_commit_readness(){
@@ -147,7 +147,7 @@ echo
 kubectl apply -f job/check-commit-readiness.yaml
 
 echo "## Commit readness job pending completion"
-kubectl wait --for=condition=complete job check-commit-readiness
+kubectl wait --for=condition=complete --timeout=300s job check-commit-readiness
 }
 
 function commit_chaincode(){
@@ -156,7 +156,7 @@ echo
 kubectl apply -f job/commit-chaincode.yaml
 
 echo "## Chanicode commiting job pending completion"
-kubectl wait --for=condition=complete job commit-chaincode
+kubectl wait --for=condition=complete --timeout=300s job commit-chaincode
 }
 
 function create_connection_json(){
@@ -177,7 +177,7 @@ echo
 kubectl apply -f job/init-ledger-data.yaml
 
 echo "## Ledger data creating job pending completion"
-kubectl wait --for=condition=complete job init-ledger-data
+kubectl wait --for=condition=complete --timeout=300s job init-ledger-data
 }
 
 function create_connection_profile(){
@@ -186,7 +186,7 @@ echo
 kubectl apply -f job/create-connection-profile.yaml
 
 echo "## Connection profile creating job pending completion"
-kubectl wait --for=condition=complete job create-connection-profile
+kubectl wait --for=condition=complete --timeout=300s job create-connection-profile
 }
 
 function create_api(){
@@ -195,7 +195,7 @@ echo
 kubectl apply -f api/
 
 echo "## Backend creation pending completion"
-kubectl wait --for condition=available deployment -l "app in (api)"
+kubectl wait --for condition=available --timeout=300s deployment -l "app in (api)"
 }
 
 function register_user(){
@@ -213,7 +213,7 @@ echo
 kubectl apply -f ui/
 
 echo "## Frontend creation pending completion"
-kubectl wait --for condition=available deployment -l "app in (frontend)"
+kubectl wait --for condition=available --timeout=300s deployment -l "app in (frontend)"
 }
 
 function create_explorer(){
@@ -222,7 +222,7 @@ echo
 kubectl apply -f explorer/
 
 echo "## Hyperledger explorer creation pending completion"
-kubectl wait --for condition=available deployment -l "app in (explorer,explorer-db)"
+kubectl wait --for condition=available --timeout=300s deployment -l "app in (explorer,explorer-db)"
 }
 
 function create_monitoring_tool(){
@@ -231,7 +231,7 @@ echo
 kubectl apply -f monitoring/
 
 echo "## Grafana,Prometheus creation pending completion"
-kubectl wait --for condition=available deployment -l "app in (grafana,prometheus)"
+kubectl wait --for condition=available --timeout=300s deployment -l "app in (grafana,prometheus)"
 }
 
 function create_ingress(){
@@ -272,7 +272,7 @@ deploy_chaincode
 approve_chaincode
 check_commit_readness
 commit_chaincode
-create_connection_json
+# create_connection_json
 init_ledger_data
 create_connection_profile
 create_api

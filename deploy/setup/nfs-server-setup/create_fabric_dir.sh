@@ -1,6 +1,6 @@
 #!/bin/bash
 
-NFS_DIR=/mnt/nfs_share
+NFS_DIR=/srv/kubedata
 FABRIC_FILES_PATH=$NFS_DIR/fabricfiles
 BROKER_PATH=$NFS_DIR/fabricfiles/broker
 
@@ -27,5 +27,5 @@ sudo chmod -R 777 $BROKER_PATH
 }
 
 # Let's go ###################################################################################
-# create_fabricfiles_dir
+create_fabricfiles_dir
 create_broker_dir

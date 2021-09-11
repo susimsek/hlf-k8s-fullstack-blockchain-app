@@ -14,8 +14,8 @@ spec:
   accessModes:
     - ReadWriteOnce
   nfs:
-    path: /mnt/nfs_share/fabricfiles/broker/zookeeper0
-    server: 192.168.12.20
+    path: /srv/kubedata/fabricfiles/broker/zookeeper0
+    server: 192.168.12.9
 
 ---
 apiVersion: v1
@@ -33,5 +33,5 @@ spec:
   accessModes:
     - ReadWriteOnce
   nfs:
-    path: /mnt/nfs_share/fabricfiles/broker/zookeeper1
-    server: 192.168.12.20
+    path: /srv/kubedata/fabricfiles/broker/zookeeper1
+    server: 192.168.12.9

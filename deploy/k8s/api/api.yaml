@@ -27,6 +27,16 @@ spec:
           limits:
             memory: "450Mi"
             cpu: "400m"
+        livenessProbe:
+          httpGet:
+            port: 4000
+            path: /health
+          periodSeconds: 3
+        readinessProbe:
+          httpGet:
+            port: 4000
+            path: /health
+          periodSeconds: 3
         ports:
         - containerPort: 4000
         volumeMounts:

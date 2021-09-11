@@ -2,7 +2,7 @@
 
 # Variables ########################################
 
-IP_HAPROXY=$(dig +short haproxy)
+IP_HAPROXY=$(dig +short elb.kub)
 KUBESPRAY_VERSION=2.15
 KUBESPRAY_PATH=${HOME}/kubespray
 SSH_PASSWORD=vagrant
@@ -11,7 +11,7 @@ METRIC_SERVER_ENABLED=true
 METALLB_ENABLED=true
 METALLB_IP_RANGE=192.168.12.240-192.168.12.250
 NGINX_INGRESS_ENABLED=true
-HAPROXY_ENABLED=false
+HAPROXY_ENABLED=true
 WEAVE_ENABLED=true
 AUTH_ENABLED=true
 

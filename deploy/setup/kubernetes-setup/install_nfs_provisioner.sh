@@ -1,6 +1,6 @@
 #!/bin/bash
 
-IP_NFS=$(hostname -I | cut -d " " -f2)
+IP_NFS=$(dig +short nfs.kub)
 NFS_PATH=/srv/kubedata
 RELEASE_NAME=nfs-provisioner
 NAMESPACE=nfs-system
