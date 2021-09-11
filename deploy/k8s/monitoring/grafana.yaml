@@ -24,6 +24,17 @@ spec:
             cpu: "500m"
         ports:
         - containerPort: 3000
+        livenessProbe:
+          httpGet:
+            path: /api/health
+            port: 3000
+          initialDelaySeconds: 60
+          timeoutSeconds: 30
+          failureThreshold: 10
+        readinessProbe:
+          httpGet:
+            path: /api/health
+            port: 3000
         env:
           - name: GF_PATHS_PROVISIONING # provising pathi
             value: /var/lib/grafana/provisioning/
