@@ -32,10 +32,16 @@ spec:
           httpGet:
             port: 9444
             path: /healthz
+          initialDelaySeconds: 60
+          timeoutSeconds: 5
+          failureThreshold: 6
         readinessProbe:
-          httpGet:
-            port: 9444
-            path: /healthz
+            httpGet:
+              port: 9444
+              path: /healthz
+            initialDelaySeconds: 5
+            timeoutSeconds: 3
+            periodSeconds: 5
         env:
           - name: CONFIGTX_ORDERER_ADDRESSES
             value: "orderer5:7050"
