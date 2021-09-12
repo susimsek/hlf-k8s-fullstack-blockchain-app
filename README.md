@@ -14,7 +14,7 @@ Blockchain Based Asset Transfer Application
 
 ## Preparation for Kubernetes Deployment
 
-Edit these values in the following files according to your nfs server configuration.
+Edit these files according to your nfs server configuration.
 
 Replace 192.168.12.9 with your nfs server ip
 
