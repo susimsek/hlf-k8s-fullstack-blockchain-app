@@ -16,7 +16,8 @@ Blockchain Based Asset Transfer Application
 
 Edit these values in the following files according to your nfs server configuration.
 
-Replace 192.168.12.9 with your nfs server ip  
+Replace 192.168.12.9 with your nfs server ip
+
 Replace /srv/kubedata with your nfs sharing path  
 
 Paths of the files to be edited
@@ -119,10 +120,6 @@ exit
 
 ```sh
 vagrant ssh k8smaster
-```
-
-```sh
- cd /vagrant/setup/kubernetes-setup
 ```
 
 ```sh
