@@ -42,10 +42,6 @@ sudo chmod u+x *.sh
 ```
 
 ```sh
-sudo ./install_nfs.sh
-```
-
-```sh
 ./create_fabric_dir.sh
 ```
 
