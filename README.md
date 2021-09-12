@@ -29,6 +29,30 @@ deploy/setup/copy_fabricfiles.sh
 deploy/setup/create_fabric_dir.sh
 ```
 
+Copy deploy folder to your nfs server.
+
+Go the path of deploy folder,run these scripts on your nfs server.
+
+```sh
+cd deploy/setup/nfs-server-setup
+```
+
+```sh
+sudo chmod u+x *.sh
+```
+
+```sh
+sudo ./install_nfs.sh
+```
+
+```sh
+./create_fabric_dir.sh
+```
+
+```sh
+./copy_fabricfiles.sh
+```
+
 ## Installation for Kubernetes Deployment
 
 ```sh
