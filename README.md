@@ -64,6 +64,10 @@ You can login to grafana with these credentials.
 
 <img src="https://github.com/susimsek/hlf-k8s-fullstack-blockchain-app/blob/main/images/grafana2.png" alt="Fullstack Blockchain Application Grafana Introduction 2" width="100%" height="100%"/>
 
+## Getting Started
+
+This is an example of how you may give instructions on setting up your project locally.
+To get a local copy up and running follow these simple example steps.
 
 ## Prerequisites for Kubernetes Deployment
 
@@ -243,3 +247,9 @@ sudo chmod u+x *.sh
 * Docker
 * Kubernetes
 * Vagrant
+
+## Contact
+
+Şuayb Şimşek - [@linkledin](https://www.linkedin.com/in/şuayb-şimşek-29b077178) - suaybsimsek58@gmail.com
+
+Project Link: [https://github.com/susimsek/hlf-k8s-fullstack-blockchain-app](https://github.com/susimsek/hlf-k8s-fullstack-blockchain-app)
