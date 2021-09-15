@@ -242,6 +242,7 @@ sudo chmod u+x *.sh
 * Angular 8.2.14
 * Kafka
 * Hyperledger Fabric 2.3
+* Couchdb
 * Hyperledger Explorer 1.1.8
 * Swagger
 * Docker
