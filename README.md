@@ -3,7 +3,10 @@ Blockchain Based Asset Transfer Application
 
 <img src="https://github.com/susimsek/hlf-k8s-fullstack-blockchain-app/blob/main/images/hlf-k8s-fullstack-blockchain-app.png" alt="Fullstack Blockchain Application" width="100%" height="100%"/>
 
-# App Introduction
+# Application Introduction
+
+The asset transfer application can be accessed from this link.  
+http://hlf-k8.tk
 
 <img src="https://github.com/susimsek/hlf-k8s-fullstack-blockchain-app/blob/main/images/frontend1.png" alt="Fullstack Blockchain Application Introduction 1" width="100%" height="100%"/>
 
@@ -15,11 +18,24 @@ Blockchain Based Asset Transfer Application
 
 # Swagger Introduction
 
+The swagger ui can be accessed from this link.  
+http://api.hlf-k8.tk/api-docs
+
 <img src="https://github.com/susimsek/hlf-k8s-fullstack-blockchain-app/blob/main/images/backend1.png" alt="Fullstack Blockchain Application Swagger Introduction 1" width="100%" height="100%"/>
 
 <img src="https://github.com/susimsek/hlf-k8s-fullstack-blockchain-app/blob/main/images/backend2.png" alt="Fullstack Blockchain Application Swagger Introduction 2" width="100%" height="100%"/>
 
 # Hyperledger Explorer Introduction
+
+The hyperledger explorer dashboard can be accessed from this link.  
+http://grafana.hlf-k8.tk
+
+You can login to hyperledger explorer with these credentials.
+
+
+| Username      | Password      | 
+| ------------- |:-------------:| 
+| admin         | adminpw       |
 
 <img src="https://github.com/susimsek/hlf-k8s-fullstack-blockchain-app/blob/main/images/explorer1.png" alt="Fullstack Blockchain Application Hyperledger Explorer Introduction 1" width="100%" height="100%"/>
 
@@ -32,6 +48,17 @@ Blockchain Based Asset Transfer Application
 <img src="https://github.com/susimsek/hlf-k8s-fullstack-blockchain-app/blob/main/images/explorer5.png" alt="Fullstack Blockchain Application Hyperledger Explorer Introduction 5" width="100%" height="100%"/>
 
 # Grafana Introduction
+
+The grafana dashboard can be accessed from this link.  
+http://grafana.hlf-k8.tk
+
+You can login to grafana with these credentials.
+
+
+| Username      | Password      | 
+| ------------- |:-------------:| 
+| admin         | adminpw       |
+
 
 <img src="https://github.com/susimsek/hlf-k8s-fullstack-blockchain-app/blob/main/images/grafana1.png" alt="Fullstack Blockchain Application Grafana Introduction 1" width="100%" height="100%"/>
 
