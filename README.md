@@ -237,6 +237,8 @@ sudo chmod u+x *.sh
 
 ## Used Technologies 
 
+<img src="https://github.com/susimsek/hlf-k8s-fullstack-blockchain-app/blob/main/images/used-technologies.png" alt="Fullstack Blockchain Application Used Technologies" width="100%" height="100%"/>
+
 * Go 1.14.6
 * Node.js 12
 * Angular 8.2.14
