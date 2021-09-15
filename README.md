@@ -50,7 +50,7 @@ You can login to hyperledger explorer with these credentials.
 # Grafana Introduction
 
 The grafana dashboard can be accessed from this link.  
-http://grafana.hlf-k8.tk
+http://explorer.hlf-k8.tk
 
 You can login to grafana with these credentials.
 
