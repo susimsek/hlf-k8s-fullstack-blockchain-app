@@ -230,3 +230,16 @@ sudo chmod u+x *.sh
 ```sh
 ./install.sh
 ```
+
+## Used Technologies 
+
+* Go 1.14.6
+* Node.js 12
+* Angular 8.2.14
+* Kafka
+* Hyperledger Fabric 2.3
+* Hyperledger Explorer 1.1.8
+* Swagger
+* Docker
+* Kubernetes
+* Vagrant
