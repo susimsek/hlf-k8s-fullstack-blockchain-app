@@ -190,7 +190,7 @@ sudo chmod u+x *.sh
 ```
 
 ```sh
-sudo ./install-prereqs.sh
+sudo ./install_haproxy.sh
 ```
 
 ```sh
